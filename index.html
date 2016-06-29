@@ -9,15 +9,19 @@
       <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 
       <link href="assets/css/theme/default/styles.css" rel="stylesheet" />
+       <link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
 
-      <script src="js/jquery-2.1.3.min.js"></script>
+       <script src="js/jquery-2.1.3.min.js"></script>
 
       <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
       <script src="js/gridstack.js"></script>
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
 
       <script src="js/bootstrap.min.js"></script>
-      <script src="js/views.js"></script>
+       <script src="js/views.js"></script>
+       <script src="js/charts.js"></script>
    </head>
    <body>
       <div class="container ">
@@ -161,147 +165,154 @@
                                 <div class="grid-stack">
 
 
-                           <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" data-gs-min-height="4" data-gs-min-width="4" >
-                              <div class="grid-stack-item-content">
-                                 <div class="cards-wd-3 clearfix">
-                                    <div class="custom-checkbox">
-                                       <input type="checkbox" class="checkbox" id="c2"/>
-                                       <label for="c2"><span></span></label>
-                                    </div>
-                                    <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
-                                    <div class="align_center">
-                                        <div class="cards-content">
-                                           <h2>3.79</h2>
-                                        </div>
-                                        <div class="cards-arrow">
-                                           <ul>
-                                              <li class="icon-TopArrow"></li>
-                                              <li class="percent-text">%</li>
-                                           </ul>
-                                        </div>
-                                    </div>
-                                 </div>
-                                 <div class="page-card-info">
-                                     <div class="tri-up small">
-                                        <div class="default-widget">Defects Leakage</div>
-                                        <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
-                                     </div>
-                                     <div class="defect-analytics move">
-                                        <h4>Defects Analytics</h4>
-                                        <p class="text-italic">Last modified on 03/26/2015</p>
-                                        <div class="select-size"><a href="#" class="custom-popover glyphicon glyphicon-fullscreen" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul class='card-sizes'><li><a href='#'>S</a></li><li><a href='#'>M</a></li><li><a href='#'>L</a></li><li><a href='#'>XL</a></li></ul></div>"></a></div>
-                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                   <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4" data-gs-min-height="4" data-gs-min-width="4" >
+                                      <div class="grid-stack-item-content" id="cont2">
+                                          <div class="cards-wd-3 clearfix">
+                                              <div class="custom-checkbox">
+                                                  <input type="checkbox" class="checkbox" id="c2"/>
+                                                  <label for="c6"><span></span></label>
+                                              </div>
+                                              <div class="toggle-btn">
+                                                  <div class="btn-group" role="group" aria-label="...">
+                                                      <button type="button" class="btn btn-default selected">Chart</button>
+                                                      <button type="button" class="btn btn-default">Table</button>
+                                                  </div>
+                                              </div>
+                                              <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
+                                              <div class="chart-container medium"></div>
+                                              <div class="align_center hide">
+                                                  <div class="cards-content">
+                                                      <h2>3.79</h2>
+                                                  </div>
+                                                  <div class="cards-arrow">
+                                                      <ul>
+                                                          <li class="icon-TopArrow"></li>
+                                                          <li class="percent-text">%</li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                         <div class="page-card-info">
+                                             <div class="tri-up small">
+                                                <div class="default-widget">Defects Leakage</div>
+                                                <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
+                                             </div>
+                                             <div class="defect-analytics move">
+                                                <h4>Defects Analytics</h4>
+                                                <p class="text-italic">Last modified on 03/26/2015</p>
+                                                <div class="select-size"><a href="#" class="custom-popover glyphicon glyphicon-fullscreen" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul class='card-sizes'><li><a href='#'>S</a></li><li><a href='#'>M</a></li><li><a href='#'>L</a></li><li><a href='#'>XL</a></li></ul></div>"></a></div>
+                                             </div>
+                                         </div>
+                                      </div>
+                                   </div>
 
-                           <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="6" data-gs-height="6" data-gs-min-height="4" data-gs-min-width="4" >
-                              <div class="grid-stack-item-content">
-                                 <div class="cards-wd-3 clearfix">
-                                    <div class="custom-checkbox">
-                                       <input type="checkbox" class="checkbox" id="c3"/>
-                                       <label for="c3"><span></span></label>
-                                    </div>
-                                    <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
-                                    <div class="align_center">
-                                        <div class="cards-content">
-                                           <h2>3.79</h2>
+                                   <div class="grid-stack-item" data-gs-x="4" data-gs-y="4" data-gs-width="6" data-gs-height="6" data-gs-min-height="4" data-gs-min-width="4" >
+                                      <div class="grid-stack-item-content">
+                                         <div class="cards-wd-3 clearfix">
+                                            <div class="custom-checkbox">
+                                               <input type="checkbox" class="checkbox" id="c3"/>
+                                               <label for="c3"><span></span></label>
+                                            </div>
+                                            <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
+                                            <div class="align_center">
+                                                <div class="cards-content">
+                                                   <h2>3.79</h2>
+                                                </div>
+                                                <div class="cards-arrow">
+                                                   <ul>
+                                                      <li class="icon-Downarrow"></li>
+                                                      <li class="percent-text">%</li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                         </div>
+                                         <div class="page-card-info">
+                                             <div class="tri-up small">
+                                                <div class="default-widget">Defects Leakage</div>
+                                                <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
+                                             </div>
+                                             <div class="defect-analytics move">
+                                                <h4>Defects Analytics</h4>
+                                                <p class="text-italic">Last modified on 03/26/2015</p>
+                                             </div>
                                         </div>
-                                        <div class="cards-arrow">
-                                           <ul>
-                                              <li class="icon-Downarrow"></li>
-                                              <li class="percent-text">%</li>
-                                           </ul>
-                                        </div>
-                                     </div>
-                                 </div>
-                                 <div class="page-card-info">
-                                     <div class="tri-up small">
-                                        <div class="default-widget">Defects Leakage</div>
-                                        <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
-                                     </div>
-                                     <div class="defect-analytics move">
-                                        <h4>Defects Analytics</h4>
-                                        <p class="text-italic">Last modified on 03/26/2015</p>
-                                     </div>
-                                </div>
-                              </div>
-                           </div>
+                                      </div>
+                                   </div>
 
-                           <div class="grid-stack-item" data-gs-x="0" data-gs-y="10" data-gs-width="4" data-gs-height="3" data-gs-min-height="4" data-gs-min-width="3" >
-                              <div class="grid-stack-item-content">
-                                 <div class="cards-wd-3 clearfix">
-                                    <div class="custom-checkbox">
-                                       <input type="checkbox" class="checkbox" id="c4"/>
-                                       <label for="c4"><span></span></label>
-                                    </div>
-                                    <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
-                                    <div class="align_center">
-                                        <div class="cards-content">
-                                           <h2>3.79</h2>
+                                   <div class="grid-stack-item" data-gs-x="0" data-gs-y="10" data-gs-width="4" data-gs-height="3" data-gs-min-height="4" data-gs-min-width="3" >
+                                      <div class="grid-stack-item-content">
+                                         <div class="cards-wd-3 clearfix">
+                                            <div class="custom-checkbox">
+                                               <input type="checkbox" class="checkbox" id="c4"/>
+                                               <label for="c4"><span></span></label>
+                                            </div>
+                                            <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
+                                            <div class="align_center">
+                                                <div class="cards-content">
+                                                   <h2>3.79</h2>
+                                                </div>
+                                                <div class="cards-arrow">
+                                                   <ul>
+                                                      <li class="icon-TopArrow"></li>
+                                                      <li class="percent-text">%</li>
+                                                   </ul>
+                                                </div>
+                                            </div>
+                                         </div>
+                                         <div class="page-card-info">
+                                             <div class="tri-up small">
+                                                <div class="default-widget">Defects Leakage</div>
+                                                <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
+                                             </div>
+                                             <div class="defect-analytics move">
+                                                <h4>Defects Analytics</h4>
+                                                <p class="text-italic">Last modified on 03/26/2015</p>
+                                             </div>
                                         </div>
-                                        <div class="cards-arrow">
-                                           <ul>
-                                              <li class="icon-TopArrow"></li>
-                                              <li class="percent-text">%</li>
-                                           </ul>
-                                        </div>
-                                    </div>
-                                 </div>
-                                 <div class="page-card-info">
-                                     <div class="tri-up small">
-                                        <div class="default-widget">Defects Leakage</div>
-                                        <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
-                                     </div>
-                                     <div class="defect-analytics move">
-                                        <h4>Defects Analytics</h4>
-                                        <p class="text-italic">Last modified on 03/26/2015</p>
-                                     </div>
-                                </div>
-                              </div>
-                           </div>
+                                      </div>
+                                   </div>
 
-                           <div class="grid-stack-item" data-gs-x="0" data-gs-y="14" data-gs-width="9" data-gs-height="9" data-gs-min-height="4" data-gs-min-width="4" >
-                              <div class="grid-stack-item-content">
-                                 <div class="cards-wd-3 clearfix">
-                                    <div class="custom-checkbox">
-                                       <input type="checkbox" class="checkbox" id="c6"/>
-                                       <label for="c6"><span></span></label>
-                                    </div>
-                                    <div class="toggle-btn">
-                                       <div class="btn-group" role="group" aria-label="...">
-                                         <button type="button" class="btn btn-default selected">Chart</button>
-                                         <button type="button" class="btn btn-default">Table</button>
-                                       </div>
-                                    </div>
-                                    <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
-                                    <div class="chart-container medium">
-                                        <img src="assets/css/images/mediumsize-chart.jpg" class="img-responsive chart-img">
-                                    </div>
-                                    <div class="align_center hide">
-                                        <div class="cards-content">
-                                           <h2>3.79</h2>
-                                        </div>
-                                        <div class="cards-arrow">
-                                           <ul>
-                                              <li class="icon-TopArrow"></li>
-                                              <li class="percent-text">%</li>
-                                           </ul>
-                                        </div>
-                                    </div>
-                                 </div>
-                                 <div class="page-card-info">
-                                     <div class="tri-up medium">
-                                        <div class="default-widget">Defects Leakage</div>
-                                        <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
-                                     </div>
-                                     <div class="defect-analytics move">
-                                        <h4>Defects Analytics</h4>
-                                        <p class="text-italic">Last modified on 03/26/2015</p>
-                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                   <div class="grid-stack-item" data-gs-x="0" data-gs-y="14" data-gs-width="9" data-gs-height="9" data-gs-min-height="4" data-gs-min-width="4" >
+                                      <div class="grid-stack-item-content" id="cont5">
+                                         <div class="cards-wd-3 clearfix">
+                                            <div class="custom-checkbox">
+                                               <input type="checkbox" class="checkbox" id="c6"/>
+                                               <label for="c6"><span></span></label>
+                                            </div>
+                                            <div class="toggle-btn">
+                                               <div class="btn-group" role="group" aria-label="...">
+                                                 <button type="button" class="btn btn-default selected">Chart</button>
+                                                 <button type="button" class="btn btn-default">Table</button>
+                                               </div>
+                                            </div>
+                                            <a href="#" class="close hide" data-toggle="modal" data-target="#delete_page">&times;</a>
+                                            <div class="chart-container medium">
+                                                <img src="assets/css/images/mediumsize-chart.jpg" class="img-responsive chart-img">
+                                            </div>
+                                            <div class="align_center hide">
+                                                <div class="cards-content">
+                                                   <h2>3.79</h2>
+                                                </div>
+                                                <div class="cards-arrow">
+                                                   <ul>
+                                                      <li class="icon-TopArrow"></li>
+                                                      <li class="percent-text">%</li>
+                                                   </ul>
+                                                </div>
+                                            </div>
+                                         </div>
+                                         <div class="page-card-info">
+                                             <div class="tri-up medium">
+                                                <div class="default-widget">Defects Leakage</div>
+                                                <div class="more-widgets-link"><a href="#" class="custom-popover" data-container="body" data-trigger="click" data-html="true" data-toggle="popover" data-placement="bottom" data-content="<div><ul><li><a href='#'>Production timeline</a></li><li><a href='#'>Error #673210 with Dryer</a></li><li><a href='#'>Open issues with US consignment</a></li><li><a href='#'>Server Up & Down Tracker</a></li></ul></div>">3 more</a></div>
+                                             </div>
+                                             <div class="defect-analytics move">
+                                                <h4>Defects Analytics</h4>
+                                                <p class="text-italic">Last modified on 03/26/2015</p>
+                                             </div>
+                                         </div>
+                                      </div>
+                                   </div>
                         </div>
                             </div>
                         </div>
