@@ -1,8 +1,4 @@
-/**
- * Created by sahasranshuroy on 29/06/16.
- */
 $(document).ready(function() {
-
     var chart1 = c3.generate({
         bindto: '#cont2 .chart-container',
         data: {
@@ -25,5 +21,14 @@ $(document).ready(function() {
                 ['data2', 50, 20, 10, 40, 15, 25]
             ]
         }
+    });
+
+
+    $('.grid-stack-item').on('resizestop', function (event, ui) {
+        var grid = this;
+        var element = event.target;
+        console.log($(grid).width()+" :: "+$(grid).height());
+        chart2.resize({height:$(grid).height()-145, width:$(grid).width()-56
+        });
     });
 });
